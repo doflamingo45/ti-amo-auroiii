@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ti Amo Auroiii 🤍</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      width: 100vw;
+      background: linear-gradient(to top right, #ffd6e0, #fff0f5, #ffe4f1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Great Vibes', cursive;
+      overflow: hidden;
+      position: relative;
+      text-align: center;
+    }
+
+    .message {
+      z-index: 2;
+      font-size: 3em; /* reduced from 4em */
+      color: #ff69b4;
+      word-spacing: 40px; /* slightly reduced spacing */
+      animation: fadeIn 3s ease, pulseGlow 2.5s infinite;
+      text-shadow: 0 0 10px #ffc0cb, 0 0 20px #ffaecb;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% {
+        text-shadow: 0 0 10px #ffc0cb, 0 0 20px #ffaecb;
+      }
+      50% {
+        text-shadow: 0 0 20px #ff8ebf, 0 0 35px #ff69b4;
+      }
+    }
+
+    @keyframes beat {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.2);
+      }
+    }
+
+    .falling-hearts {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0; left: 0;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .falling-hearts span {
+      position: absolute;
+      display: block;
+      color: #ff6fa4;
+      font-size: 20px;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-10vh);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
+
+    img.beating-heart {
+      margin-top: 20px;
+      animation: beat 1s infinite;
+      width: 120px;
+      height: auto;
+      z-index: 2;
+    }
+
+    /* 📱 Responsive tweak for smaller screens */
+    @media (max-width: 600px) {
+      .message {
+        font-size: 2.2em;
+        word-spacing: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="falling-hearts" id="hearts-container"></div>
+
+  <div class="message">TI AMO AUROIII 🤍</div>
+
+  <img 
+    src="cr-umano.png" 
+    alt="Beating Human Heart" 
+    class="beating-heart"
+  />
+
+  <script>
+    const heartsContainer = document.getElementById('hearts-container');
+    const heartCount = 50;
+    for(let i = 0; i < heartCount; i++) {
+      const heart = document.createElement('span');
+      heart.textContent = '❤️';
+      heart.style.left = `${Math.random() * 100}vw`;
+      heart.style.animationDuration = `${5 + Math.random() * 5}s`;
+      heart.style.animationDelay = `${Math.random() * 5}s`;
+      heartsContainer.appendChild(heart);
+    }
+  </script>
+
+</body>
+</html>
